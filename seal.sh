@@ -5,5 +5,5 @@ then
 	exit 1
 fi
 
-python3 genpdf.py $3
+python3 core/genpdf.py $3
 pdftk $1 stamp watermark.pdf output $2
