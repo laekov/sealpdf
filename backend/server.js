@@ -14,7 +14,6 @@ app.use(bodyParser.json({limit: '5gb'}));
 app.use(bodyParser.urlencoded());
 
 app.post('/upload-pptx', (req, res) => {
-	console.log('555');
 	var writeFunc = fs.appendFileSync;
 	if (req.body.token === -1) {
 		var filename = crypto.Hash("md5").update(req.body.body).digest("hex");
@@ -36,9 +35,7 @@ app.post('/generate-watermark', (req, res) => {
 	var text = req.body.watermark;
 	var filename = crypto.Hash("md5").update(text).digest("hex");
 	var filepath = path.resolve(config.data_path, filename + '.pdf');
-	console.log('wm p: ' + filepath);
 	if (fs.existsSync(filepath)) {
-		console.log('Exists???');
 		return res.status(200).send("Exists");
 	}
 	var cmd = 'python3 ../core/genwatermark.py ' + filepath + ' "' + text + '"';
