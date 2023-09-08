@@ -88,10 +88,11 @@ app.post('/seal', (req, res) => {
 
 app.get('/get-output/:token', (req, res) => {
 	var filepath = path.resolve(config.data_path, req.params.token + '.pdf');
-	if (!path.existsSync(filepath)) {
+	console.log('Trying to get ' + filepath);
+	if (!fs.existsSync(filepath)) {
 		return res.status(404).send("File not found");
 	}
-	res.sendFile(filepath);
+	res.status(200).sendFile(filepath);
 });
 
 app.use(express.static(path.join(__dirname, '../frontend')));
