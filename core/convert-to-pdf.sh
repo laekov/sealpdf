@@ -7,6 +7,7 @@ remote_prefix="C:\\sealpdf\\$filename"
 if [ -f $local_prefix.pdf ]
 then
 	echo "Exists"
+	rm $local_prefix.pptx.base64
 	exit
 fi
 
