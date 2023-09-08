@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import sys
 
 
-def gen(txt):
+def gen(filename, txt):
     matplotlib.rcParams['font.sans-serif'] = ['SimHei']
     fig, ax = plt.subplots()
     fig.set_dpi(60)
@@ -20,10 +20,11 @@ def gen(txt):
     ax.set_xlim(0, 960)
     ax.set_ylim(0, 540)
     plt.axis('off')
-    plt.savefig('watermark.pdf', transparent=True)
+    plt.savefig(filename, transparent=True)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        gen('sample watermark')
+    if len(sys.argv) != 3:
+        print("Usage: genwatermark.py <filename> <text>")
+        exit(1)
     else:
-        gen(sys.argv[1])
+        gen(sys.argv[1], sys.argv[2])
