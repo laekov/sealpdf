@@ -9,7 +9,7 @@ const config = require('./config');
 
 
 var app = express();
-app.use(logger('dev'));
+app.use(logger('common'));
 app.use(bodyParser.json({limit: '5gb'}));
 app.use(bodyParser.urlencoded());
 
