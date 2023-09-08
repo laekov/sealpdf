@@ -28,6 +28,8 @@ scp $local_prefix.pptx $windows_host:/sealpdf/$filename.pptx &&
 if [ $? != 0 ]
 then
 	exit $?
+else
+	rm $local_prefix.pptx.base64
 fi
 
 echo Generated
