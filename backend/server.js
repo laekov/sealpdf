@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded());
 app.post('/upload-pptx', (req, res) => {
 	var writeFunc = fs.appendFileSync;
 	if (req.body.token === -1) {
-		var filename = crypto.Hash("md5").update(req.body.body).digest("hex");
+		var filename = crypto.Hash("md5").update(req.body.body + Date.now()).digest("hex");
 		writeFunc = fs.writeFileSync;
 	} else {
 		var filename = req.body.token;
